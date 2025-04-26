@@ -102,9 +102,17 @@ public class HangmanGameService {
       //  буквата съвпада с думата на тази позиция
       //  и ако ДА - да я добавя към новата изградена дума
 
-      newCurrentWord.append(currentLetter);
-    }
 
+      if(currentLetter == actualLetter){
+        newCurrentWord.append(actualLetter);
+      }
+      else if (actualLetter == letter){
+        newCurrentWord.append(letter);
+      }
+      else {
+        newCurrentWord.append(currentLetter);
+      }
+    }
     return newCurrentWord.toString();
   }
 
@@ -113,6 +121,16 @@ public class HangmanGameService {
     // TODO: Проверете дали играта трябва да приключи
     //  1. Ако текущият брой грешки е равен или по-голям от максималния – играта е загубена
     //  2. Ако думата е напълно отгатната, играта е спечелена
+
+
+    if(hangmanGame.getCurrentWrongGuess() >= gameProperties.getMaxNumberOfGuesses()){
+      hangmanGame.setStatus(Status.LOST);
+      return;
+    }
+
+    if(hangmanGame.getWordToGuess().equals(hangmanGame.getCurrentWord())){
+      hangmanGame.setStatus(Status.WON);
+    }
 
   }
 
