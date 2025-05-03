@@ -1,4 +1,4 @@
-package pu.fmi.game.hangman;
+package pu.fmi.game.hangman.model.entity;
 
 public enum Status {
   IN_PROGRESS,

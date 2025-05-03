@@ -9,6 +9,11 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import pu.fmi.game.hangman.model.config.GameProperties;
+import pu.fmi.game.hangman.model.entity.HangmanGame;
+import pu.fmi.game.hangman.model.entity.Status;
+import pu.fmi.game.hangman.model.providers.GenericWordProvider;
+import pu.fmi.game.hangman.model.service.HangmanGameService;
 
 @ExtendWith(MockitoExtension.class)
 public class HangmanGameServiceTest {

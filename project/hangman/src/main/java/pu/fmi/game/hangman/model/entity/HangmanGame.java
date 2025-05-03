@@ -1,4 +1,4 @@
-package pu.fmi.game.hangman;
+package pu.fmi.game.hangman.model.entity;
 
 import java.time.LocalDateTime;
 import java.util.List;

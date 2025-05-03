@@ -1,4 +1,4 @@
-package pu.fmi.game.hangman;
+package pu.fmi.game.hangman.model.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;

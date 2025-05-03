@@ -4,6 +4,8 @@ import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
+import pu.fmi.game.hangman.model.entity.HangmanGame;
+import pu.fmi.game.hangman.model.service.HangmanGameService;
 
 @SpringBootApplication
 public class HangmanApplication {
