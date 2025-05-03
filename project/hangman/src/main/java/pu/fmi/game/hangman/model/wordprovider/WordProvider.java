@@ -1,4 +1,4 @@
-package pu.fmi.game.hangman.model.providers;
+package pu.fmi.game.hangman.model.wordprovider;
 
 import java.util.List;
 import java.util.Random;

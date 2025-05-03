@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import pu.fmi.game.hangman.model.config.GameProperties;
 import pu.fmi.game.hangman.model.entity.HangmanGame;
 import pu.fmi.game.hangman.model.entity.Status;
-import pu.fmi.game.hangman.model.providers.GenericWordProvider;
+import pu.fmi.game.hangman.model.wordprovider.GenericWordProvider;
 
 @Service
 public class HangmanGameService {
@@ -149,5 +149,9 @@ public class HangmanGameService {
             stringBuilder.append(PLACEHOLDER_SYMBOL);
         }
         return stringBuilder.toString();
+    }
+
+    public List<HangmanGame> getStoredGamesCollection() {
+        return storedGamesCollection;
     }
 }

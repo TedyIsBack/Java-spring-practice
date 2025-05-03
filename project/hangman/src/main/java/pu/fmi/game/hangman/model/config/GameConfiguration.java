@@ -2,7 +2,7 @@ package pu.fmi.game.hangman.model.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import pu.fmi.game.hangman.model.providers.WordProvider;
+import pu.fmi.game.hangman.model.wordprovider.WordProvider;
 
 @Configuration
 public class GameConfiguration {

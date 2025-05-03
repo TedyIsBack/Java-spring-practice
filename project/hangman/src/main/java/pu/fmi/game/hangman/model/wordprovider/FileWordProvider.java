@@ -1,4 +1,4 @@
-package pu.fmi.game.hangman.model.providers;
+package pu.fmi.game.hangman.model.wordprovider;
 
 public class FileWordProvider implements GenericWordProvider {
 
