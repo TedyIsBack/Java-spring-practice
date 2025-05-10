@@ -94,9 +94,11 @@ public class HangmanGameService implements GameService {
   }
 
   @Override
-  public List<HangmanGame> getAllGames(int limit){
-    Pageable pageable = PageRequest.of(0, limit, Sort.by("startedOnDate").descending());
-    return this.gameRepository.findAllByOrderByStartedOnDateDesc(pageable);
+  public List<HangmanGame> getAllGames(/*int limit*/){
+    //Pageable pageable = PageRequest.of(0, limit, Sort.by("startedOnDate").descending());
+    //return this.gameRepository.findAllByOrderByStartedOnDateDesc(pageable);
+
+    return this.gameRepository.findTop10ByOrderByStartedOnDateDesc();
   }
 
   @Override

@@ -15,5 +15,5 @@ public interface GameService {
 
   HangmanGame getGameById(Long id);
 
-  List<HangmanGame> getAllGames(int limit);
+  List<HangmanGame> getAllGames(/*int limit*/);
 }

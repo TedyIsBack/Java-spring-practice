@@ -46,8 +46,8 @@ public class HangmanGameRestApi {
   //По подразбиране, ако няма зададена стойност, ще връща 10 игри
   // GET /hangman-games
   @GetMapping
-  public List<HangmanGame> fetchAllGames(@RequestParam(defaultValue = "10")int limit) {
-    return hangmanGameService.getAllGames(limit);
+  public List<HangmanGame> fetchAllGames(/*@RequestParam(defaultValue = "10")int limit*/) {//limit да се подаде на getAllGames
+    return hangmanGameService.getAllGames();
   }
 
   // GET /hangman-games/status
