@@ -4,6 +4,9 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import pu.fmi.game.hangman.model.config.GameProperties;
 import pu.fmi.game.hangman.model.entity.HangmanGame;
@@ -91,8 +94,9 @@ public class HangmanGameService implements GameService {
   }
 
   @Override
-  public List<HangmanGame> getAllGames(){
-    return this.gameRepository.findAll();
+  public List<HangmanGame> getAllGames(int limit){
+    Pageable pageable = PageRequest.of(0, limit, Sort.by("startedOnDate").descending());
+    return this.gameRepository.findAllByOrderByStartedOnDateDesc(pageable);
   }
 
   @Override
