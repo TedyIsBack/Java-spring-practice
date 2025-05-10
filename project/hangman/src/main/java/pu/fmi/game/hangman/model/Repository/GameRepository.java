@@ -18,11 +18,12 @@ public interface GameRepository extends JpaRepository<HangmanGame, Long> {
     // TODO: Add query method to find first 10 games ordered by started on date desc
     // Look here for examples: https://docs.spring.io/spring-data/jpa/reference/repositories/query-methods-details.html#repositories.limit-query-result
 
-    //в случай,че искаме да връщаме различен брой игри, подредени по startedOnDate. По подразбиране са 10
-    List<HangmanGame> findAllByOrderByStartedOnDateDesc(Pageable pageable);
+    List<HangmanGame> findTop10ByOrderByStartedOnDateDesc();
+
+    // в случай, че искаме да връщаме различен брой игри, подредени по startedOnDate. По подразбиране ще са 10
+    // тогава в GameService ще се подаде limit на на getAllGames(int limit)
+    //List<HangmanGame> findAllByOrderByStartedOnDateDesc(Pageable pageable);
 
 
-    // или този метод да се извиква в getAllGames() в HangmanGameService вместо findAllByOrderByStartedOnDateDesc
-    //List<HangmanGame> findTop10ByOrderByStartedOnDateDesc();
 
 }
