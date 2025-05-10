@@ -1,94 +1,72 @@
 package pu.fmi.game.hangman.model.entity;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
+@Entity
+@Table(name = "HANGMAN_GAME")
+@Getter
+@Setter
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
 public class HangmanGame {
 
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "GAME_ID", nullable = false)
   private Long id;
-  private String wordToGuess;
+
+  @ManyToOne
+  @JoinColumn(name = "WORD_ID", referencedColumnName = "ID")
+  private Word word;
+
+  @Column(name = "STARTED_ON_DATE")
   private LocalDateTime startedOnDate;
+
+  @Column(name="CURRENT_WORD", nullable = false, length = 100)
   private String currentWord;
+
+  @Enumerated(EnumType.STRING)
   private Status status;
-  private List<Character> wrongLetters;
+
+  @Column(name = "WRONG_LETTERS")
+  private String wrongLetters;
+
+  @Column(name = "WORD_GUESSES", nullable = false)
   private int wrongGuesses;
+
+  @Column(name = "CURRENT_WRONG_GUESS", nullable = false)
   private int currentWrongGuess;
 
-  public Long getId() {
-    return id;
+  @ManyToOne
+  @JoinColumn(name = "PLAYER_ID", referencedColumnName = "ID")
+  private Player player;
+
+  public List<String> getWrongLetters() {
+    return wrongLetters == null || wrongLetters.isBlank()
+        ? new ArrayList<>()
+        : new ArrayList<>(Arrays.asList(wrongLetters.split(",")));
   }
 
-  public void setId(Long id) {
-    this.id = id;
-  }
-
-  public String getWordToGuess() {
-    return wordToGuess;
-  }
-
-  public void setWordToGuess(String wordToGuess) {
-    this.wordToGuess = wordToGuess;
-  }
-
-  public LocalDateTime getStartedOnDate() {
-    return startedOnDate;
-  }
-
-  public void setStartedOnDate(LocalDateTime startedOnDate) {
-    this.startedOnDate = startedOnDate;
-  }
-
-  public String getCurrentWord() {
-    return currentWord;
-  }
-
-  public void setCurrentWord(String currentWord) {
-    this.currentWord = currentWord;
-  }
-
-  public Status getStatus() {
-    return status;
-  }
-
-  public void setStatus(Status status) {
-    this.status = status;
-  }
-
-  public List<Character> getWrongLetters() {
-    return wrongLetters;
-  }
-
-  public void setWrongLetters(List<Character> wrongLetters) {
-    this.wrongLetters = wrongLetters;
-  }
-
-  public int getWrongGuesses() {
-    return wrongGuesses;
-  }
-
-  public void setWrongGuesses(int wrongGuesses) {
-    this.wrongGuesses = wrongGuesses;
-  }
-
-  public int getCurrentWrongGuess() {
-    return currentWrongGuess;
-  }
-
-  public void setCurrentWrongGuess(int currentWrongGuess) {
-    this.currentWrongGuess = currentWrongGuess;
-  }
-
-  @Override
-  public String toString() {
-    return "HangmanGame{" +
-        "id=" + id +
-        ", wordToGuess='" + wordToGuess + '\'' +
-        ", startedOnDate=" + startedOnDate +
-        ", currentWord='" + currentWord + '\'' +
-        ", status=" + status +
-        ", wrongLetters=" + wrongLetters +
-        ", wrongGuesses=" + wrongGuesses +
-        ", currentWrongGuess=" + currentWrongGuess +
-        '}';
+  public void setWrongLetters(List<String> letters) {
+    this.wrongLetters = String.join(",", letters);
   }
 }

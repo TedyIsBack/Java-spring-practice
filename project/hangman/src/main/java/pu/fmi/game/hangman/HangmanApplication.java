@@ -15,14 +15,14 @@ public class HangmanApplication {
 		ConfigurableApplicationContext applicationContext
 				= SpringApplication.run(HangmanApplication.class, args);
 
-		// whatIsBean(applicationContext);
+		// 		whatIsBean(applicationContext);
 
-		HangmanGameService hangmanGameService = applicationContext.getBean(HangmanGameService.class);
-		HangmanGame hangmanGame = hangmanGameService.startNewGame();
-		System.out.println(hangmanGame);
-
-		HangmanGameService hangmanGameServiceTwo = applicationContext.getBean(HangmanGameService.class);
-		System.out.println(hangmanGameServiceTwo);
+		//		HangmanGameService hangmanGameService = applicationContext.getBean(HangmanGameService.class);
+		//		HangmanGame hangmanGame = hangmanGameService.startNewGame();
+		//		System.out.println(hangmanGame);
+		//
+		//		HangmanGameService hangmanGameServiceTwo = applicationContext.getBean(HangmanGameService.class);
+		//		System.out.println(hangmanGameServiceTwo);
 	}
 
 	private static void whatIsBean(ConfigurableApplicationContext applicationContext){
